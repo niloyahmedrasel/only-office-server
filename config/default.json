@@ -12,11 +12,11 @@
     }
   },
   "server": {
-    "port": 3000,
-    "siteUrl": "https://office.pathok.com.bd",
+    "port": 3001,
+    "siteUrl": "https://office.pathok.com.bd/",
     "wopi": {
-      "discovery": "hosting/discovery"
-
+      "discovery": "hosting/discovery",
+      "enable":true
     },
     "commandUrl": "command",
     "converterUrl": "converter",
