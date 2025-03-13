@@ -23,7 +23,7 @@
     "apiUrl": "web-apps/apps/api/documents/api.js",
     "preloaderUrl": "web-apps/apps/api/documents/cache-scripts.html",
     "exampleUrl": null,
-    "storageFolder": "./files",
+    "storageFolder": "/var/www/only-office-server/files",
     "storagePath": "/files",
     "maxFileSize": 1073741824,
     "maxNameLength": 50,
