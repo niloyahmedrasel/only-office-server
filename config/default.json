@@ -12,7 +12,7 @@
     }
   },
   "server": {
-    "port": 3001,
+    "port": 3002,
     "siteUrl": "https://office.pathok.com.bd/",
     "wopi": {
       "discovery": "hosting/discovery",
