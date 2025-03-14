@@ -239,7 +239,7 @@ DocManager.prototype.getDownloadUrl = function getDownloadUrl(fileName, forDocum
 
 DocManager.prototype.storageRootPath = function storageRootPath(userAddress) {
   // get the path to the directory for the host address
-  return path.join(storageConfigFolder, this.curUserHostAddress(userAddress));
+  return path.join(storageConfigFolder);
 };
 
 // get the storage path of the given file
