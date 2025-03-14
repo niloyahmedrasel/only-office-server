@@ -1,6 +1,6 @@
 {
   "server": {
-    "siteUrl": "/",
+    "siteUrl": "https://office.pathok.com.bd/",
     "maxFileSize": 104857600,
     "storageFolder": "/var/www/only-office-server/files"
   }
