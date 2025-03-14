@@ -267,16 +267,13 @@ app.get('/history', (req, res) => {
 app.post('/upload', (req, res) => { // define a handler for uploading files
   req.DocManager = new DocManager(req, res);
   req.DocManager.storagePath(''); // mkdir if not exist
-
-  const userIp = req.DocManager.curUserHostAddress(); // get the path to the user host
-  const uploadDir = req.DocManager.storageRootPath(userIp);
-  const uploadDirTmp = path.join(uploadDir, 'tmp'); // and create directory for temporary files if it doesn't exist
-  req.DocManager.createDirectory(uploadDirTmp);
+ // get the path to the user host
+  const uploadDir = req.DocManager.storagePath("");
 
   const fileSizeLimit = configServer.get('maxFileSize');
   // create a new incoming form
   const form = new formidable.IncomingForm({ maxFileSize: fileSizeLimit, maxTotalFileSize: fileSizeLimit });
-  form.uploadDir = uploadDirTmp; // and write there all the necessary parameters
+  form.uploadDir = uploadDir; // and write there all the necessary parameters
   form.keepExtensions = true;
 
   form.parse(req, (err, fields, files) => { // parse this form
@@ -288,7 +285,10 @@ app.post('/upload', (req, res) => { // define a handler for uploading files
       return;
     }
 
-    const file = files.uploadedFile[0];
+    console.log("files",files)
+
+    const file = files.file[0];
+    console.log(file)
 
     if (file === undefined) { // if file parameter is undefined
       res.writeHead(200, { 'Content-Type': 'text/plain' }); // write the error status and message to the response
@@ -330,9 +330,8 @@ app.post('/upload', (req, res) => { // define a handler for uploading files
         res.write(`{ "filename": "${file.originalFilename}", "documentType": "${documentType}" }`);
 
         // get user id and name parameters or set them to the default values
-        const user = users.getUser(req.query.userid);
 
-        req.DocManager.saveFileData(file.originalFilename, user.id, user.name);
+        req.DocManager.saveFileData(file.originalFilename);
       }
       res.end();
     });
